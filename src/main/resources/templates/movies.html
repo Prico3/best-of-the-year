@@ -5,12 +5,19 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Best yearss</title>
+  <title>Movies</title>
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+
 </head>
 <body>
-<h1>Film</h1>
-<p>Titoli dei film:</p>
-<p> <span th:text="${titles}"></span></p>
-
+<div class="container text-center">
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
+  <h1>Best Movies of the Year</h1>
+  <ul class="list-group">
+    <li class="list-group-item" th:each="movie : ${movies}">
+      <a th:href="@{/movies/{id}(id=${movie.id})}" th:text="${movie.title}"></a>
+    </li>
+  </ul>
+</div>
 </body>
 </html>
